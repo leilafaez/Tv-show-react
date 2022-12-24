@@ -1,3 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Trirong");
+@import url("https://fonts.googleapis.com/css?family=Audiowide");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root{
+  --body-font-one : "Trirong", sans-sans;
+  --body-font-two : "Audiowide", sans-sans;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +17,72 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: beige;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+/* Application Style */
+header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #262726;
+}
+
+header h1 {
+  margin: 0 20px;
+  color: #fff;
+  font-family: var(--body-font-two);
+}
+
+#movies,
+#shows,#search {
+  width: 230px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding-left: 15px;
+}
+#movies {
+  margin-left: 15px;
+}
+#shows {
+  margin-left:200px;
+}
+.root{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.root section{
+   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 50px;
+  /* height: 620px; */
+  width: 950px;
+  height: fit-content;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 5px;
+  background-color: #9F8C76;
+}
+footer {
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: lightgray;
+}
+footer a {
+  text-decoration: none;
 }
