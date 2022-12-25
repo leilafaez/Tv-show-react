@@ -3,7 +3,7 @@ import React from "react";
 const SelectShows=()=>{
     return (
       <select name="shows" id="shows">
-        <option value="" selected>
+        <option value="" defaultValue>
           --Select the show--
         </option>
       </select>
