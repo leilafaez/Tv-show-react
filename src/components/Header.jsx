@@ -16,7 +16,7 @@ const Header = ({ setContent ,isVisible,handleVisible}) => {
         handleVisible={handleVisible}
         setShowId={setShowId}
       />
-      <SelectEpisodes isVisible={isVisible} showId={showId} />
+      {isVisible && <SelectEpisodes showId={showId} />}
     </header>
   );
 };
