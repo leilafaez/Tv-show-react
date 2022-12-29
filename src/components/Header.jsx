@@ -1,17 +1,24 @@
-import React from "react";
+import React,{useState} from "react";
 import SelectEpisodes from "./SelectEpisodes";
 import SelectShows from "./SelectShows";
 import Search from "./Search";
 
-const Header=()=>{
-    return(
-        <header>
-            <h1>Tv-Shows</h1>
-            <Search />
-            <SelectShows />
-            <SelectEpisodes/>
-        </header>
-    );
-}
+const Header = ({ setContent ,isVisible,handleVisible}) => {
+  
+  const [showId, setShowId] = useState();
+
+  return (
+    <header>
+      <h1>Tv-Shows</h1>
+      <Search />
+      <SelectShows
+        setContent={setContent}
+        handleVisible={handleVisible}
+        setShowId={setShowId}
+      />
+      <SelectEpisodes isVisible={isVisible} showId={showId} />
+    </header>
+  );
+};
 
 export default Header;

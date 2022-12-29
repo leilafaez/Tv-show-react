@@ -1,28 +1,44 @@
 import React from "react";
 
-const Card=({show})=>{
-      const newSummary = show.summary.replace(/(<([^>]+)>)/gi, "");
+const Card = ({ item, setContent, handleVisible }) => {
+  const newSummary = item.summary.replace(/(<([^>]+)>)/gi, "");
+
+  const handleEpisodeFromCard = () => {
+    const value = item.id;
+    const fetchDataEpisodeFromCard = fetch(
+      `https://api.tvmaze.com/shows/${value}/episodes`
+    )
+      .then((response) => response.json())
+      .then((data) => setContent(data))
+      .catch((err) => console.log(err));
+    fetchDataEpisodeFromCard(value);
+    handleVisible(true);
+  };
   return (
     <div className="root">
-      <section>
-        <h3>{show.name}</h3>
-        <img src={show.image?.medium} alt="" />
-         <p>{newSummary}</p>
-        <CardDetails show={show} />
+      <section onClick={handleEpisodeFromCard}>
+        <h3>{item.name}</h3>
+        <img src={item.image?.medium} alt="" />
+        <p>{newSummary}</p>
+        <CardDetails item={item} />
       </section>
     </div>
   );
-}
-const CardDetails = ({ show }) => {
+};
+const CardDetails = ({ item }) => {
   return (
-    <div>
-      <ul>
-        <li>Rating : {show.rating.average}</li>
-        <li>Genres : {show.genres[0]}</li>
-        <li>Status : {show.status}</li>
-        <li>Runtime : {show.runtime}</li>
-      </ul>
-    </div>
+    <>
+      {item.genres && (
+        <div>
+          <ul>
+            <li>Rating : {item.rating.average}</li>
+            <li>Genres : {item.genres[0]}</li>
+            <li>Status : {item.status}</li>
+            <li>Runtime : {item.runtime}</li>
+          </ul>
+        </div>
+      )}
+    </>
   );
 };
 
