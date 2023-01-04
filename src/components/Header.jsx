@@ -8,7 +8,7 @@ const Header = ({ content,setContent ,isVisible,handleVisible,showId,setShowId})
   return (
     <header>
       <h1>Tv-Shows</h1>
-      <Search />
+      <Search content={content} setContent={setContent} />
       <SelectShows
         setContent={setContent}
         handleVisible={handleVisible}

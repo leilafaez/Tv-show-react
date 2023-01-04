@@ -18,7 +18,7 @@ const Card = ({ item, setContent, handleVisible,setShowId }) => {
 
   };
   return (
-    <div className="root">
+    <div >
       <section onClick={handleEpisodeFromCard}>
         <h3>{item.name}</h3>
         <img src={item.image?.medium} alt="" />
