@@ -1,12 +1,10 @@
-import React,{useState} from "react";
+import React from "react";
 import SelectEpisodes from "./SelectEpisodes";
 import SelectShows from "./SelectShows";
 import Search from "./Search";
 
-const Header = ({ setContent ,isVisible,handleVisible}) => {
+const Header = ({ content,setContent ,isVisible,handleVisible,showId,setShowId}) => {
   
-  const [showId, setShowId] = useState();
-
   return (
     <header>
       <h1>Tv-Shows</h1>
@@ -16,8 +14,8 @@ const Header = ({ setContent ,isVisible,handleVisible}) => {
         handleVisible={handleVisible}
         setShowId={setShowId}
       />
-      <SelectEpisodes isVisible={isVisible} showId={showId} />
-    </header>
+{     isVisible && <SelectEpisodes  content={content} setContent={setContent} showId={showId} />}  
+  </header>
   );
 };
 

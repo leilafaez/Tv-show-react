@@ -1,29 +1,44 @@
-import React,{useState} from "react";
+import React from "react";
 
-const SelectEpisodes= ({isVisible,showId})=>{
+const SelectEpisodes= ({content,setContent,showId})=>{
 
-  const[episodeData,setEpisodeData]=useState([]);
+   const fetchDataEpisodeFromCard = async () => {
+     const result = await fetch(
+       `https://api.tvmaze.com/shows/${showId}/episodes`
+     );
+     const data = await result.json();
+     setContent(data);
+   };
+    let handleSelectEpisodeChange=event=>{
 
-   fetch(`https://api.tvmaze.com/shows/${showId}/episodes`)
-   .then(response=>response.json())
-   .then(data=>setEpisodeData(data))
-   .catch(err=>console.log(err));
- 
-  
-    return (  
+      let selectValue=event.target.value;
+      if (selectValue === "Allepisode"){
+        fetchDataEpisodeFromCard();
       
-      <>
-        {isVisible ? (
-          <select name="movies" id="movies">
-            <option value="" defaultValue>
+        
+      }else{
+        setContent(
+          content.filter((element) => {
+            if(element.name===selectValue){
+            
+              return true;
+            }
+            return false;
+          })
+        );
+      };
+    }
+    return (  
+        
+          <select name="movies" id="movies" onChange={handleSelectEpisodeChange}>
+            <option value="Allepisode" defaultValue>
                --Select the episode-- 
-            </option>
-            {episodeData.map((item)=><option key={item.id} value={item.id}>{item.name}</option>)}
+            </option >
+            {content.map((item)=><option key={item.id} value={item.name}>{item.name}</option>)}
           </select>
-        ) : null}
-      </>
+        ) 
      
-    );
+    
 }
 
 export default SelectEpisodes;

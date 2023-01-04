@@ -18,7 +18,8 @@ const SelectShows = ({ setContent, handleVisible ,setShowId}) => {
     }else{
       fetchData(selectedValue);
     handleVisible(true);
-    setShowId(selectedValue);}
+    setShowId(selectedValue);
+  }
     
   };
 

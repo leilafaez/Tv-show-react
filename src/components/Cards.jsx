@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import Card from "./Card";
 
 
-const Cards = ({ content, setContent, handleVisible }) => {
+const Cards = ({ content, setContent, handleVisible,setShowId}) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const handleLoading = () => {
@@ -23,6 +23,7 @@ const Cards = ({ content, setContent, handleVisible }) => {
             item={item}
             setContent={setContent}
             handleVisible={handleVisible}
+            setShowId={setShowId}
           />
         );
       })}

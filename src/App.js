@@ -9,14 +9,16 @@ import { allShows } from './data/shows';
 function App() {
 
   const[content,setContent]=useState(allShows);
+  
+  const [showId, setShowId] = useState();
   const [isVisible, setVisible] = useState(false);
   let handleVisible = (currentVisibility) => {
     setVisible(currentVisibility);
   };
   return (
     <div className="App">
-      <Header setContent={setContent} isVisible={isVisible} handleVisible={handleVisible} />
-      <Cards content={content} setContent={setContent} handleVisible={handleVisible}  />
+      <Header content={content} setContent={setContent} isVisible={isVisible} handleVisible={handleVisible} showId={showId} setShowId={setShowId} />
+      <Cards content={content} setContent={setContent} handleVisible={handleVisible} setShowId={setShowId}  />
       <Footer />
     </div>
   );
